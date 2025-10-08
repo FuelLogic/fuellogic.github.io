@@ -187,6 +187,29 @@
         <li>AI/Robot: Manipulator, Mobile, Human-Robot Interaction, Teleoperation</li>
         <li>Development Environment: Unity, Hugging Face, Gazebo, Arduino, Raspberry Pi, ROS, Python, Blender</li>
       </ul>
+
+      <div class="stats" style="display:flex; gap:40px; margin-top:24px; flex-wrap:wrap;">
+        <div class="stat-item">
+          <p style="margin:0; color:var(--muted); font-size:16px;">📘 승인 논문</p>
+          <p id="paperCount" style="margin:4px 0; font-size:28px; font-weight:700; color:var(--accent);">0</p>
+        </div>
+        <div class="stat-item">
+          <p style="margin:0; color:var(--muted); font-size:16px;">🔬 특허</p>
+          <p id="patentCount" style="margin:4px 0; font-size:28px; font-weight:700; color:var(--accent-2);">0</p>
+        </div>
+        <div class="stat-item">
+          <p style="margin:0; color:var(--muted); font-size:16px;">🚀 프로젝트</p>
+          <p id="projectCount" style="margin:4px 0; font-size:28px; font-weight:700; color:var(--accent);">0</p>
+        </div>
+      </div>
+
+
+
+
+
+
+
+      
     </section>
 
     <section id="contact" class="section" style="padding-bottom: 10px;">
@@ -303,6 +326,36 @@
         video.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
       }
     });
+  </script>
+
+
+  <script>
+  function animateCount(id, target, duration) {
+    const el = document.getElementById(id);
+    let start = 0;
+    const increment = target / (duration / 16); // 16ms ≈ 60fps
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) {
+        start = target;
+        clearInterval(timer);
+      }
+      el.textContent = Math.floor(start);
+    }, 16);
+  }
+  
+  // Intersection Observer: 스크롤로 보일 때 시작
+  const stats = document.querySelector('.stats');
+  let started = false;
+  const observer = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting && !started) {
+      started = true;
+      animateCount("paperCount", 6, 1200);
+      animateCount("patentCount", 1, 1200);
+      animateCount("projectCount", 12, 1200);
+    }
+  });
+  observer.observe(stats);
   </script>
 
 
