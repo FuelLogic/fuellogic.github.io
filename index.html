@@ -187,30 +187,41 @@
         <li>AI/Robot: Manipulator, Mobile, Human-Robot Interaction, Teleoperation</li>
         <li>Development Environment: Unity, Hugging Face, Gazebo, Arduino, Raspberry Pi, ROS, Python, Blender</li>
       </ul>
-
-      <div class="stats" style="display:flex; gap:40px; margin-top:24px; flex-wrap:wrap;">
-        <div class="stat-item">
-          <p style="margin:0; color:var(--muted); font-size:16px;">📘 승인 논문</p>
-          <p id="paperCount" style="margin:4px 0; font-size:28px; font-weight:700; color:var(--accent);">0</p>
-        </div>
-        <div class="stat-item">
-          <p style="margin:0; color:var(--muted); font-size:16px;">🔬 특허</p>
-          <p id="patentCount" style="margin:4px 0; font-size:28px; font-weight:700; color:var(--accent-2);">0</p>
-        </div>
-        <div class="stat-item">
-          <p style="margin:0; color:var(--muted); font-size:16px;">🚀 프로젝트</p>
-          <p id="projectCount" style="margin:4px 0; font-size:28px; font-weight:700; color:var(--accent);">0</p>
-        </div>
-      </div>
-
-
-
-
-
-
-
-      
     </section>
+    
+    <section id="research" class="section">
+      <h2 style="margin:0 0 12px;">Research Performance</h2>
+    
+      <div style="display:flex; align-items:flex-start; flex-wrap:wrap; gap:48px;">
+    
+        <!-- 🔹 승인 논문 수 -->
+        <div>
+          <p style="margin:0; color:var(--muted); font-size:16px;">🧠 승인 논문 수</p>
+          <p id="paperCount" style="margin:4px 0; font-size:34px; font-weight:700; color:var(--accent);">0</p>
+        </div>
+    
+        <!-- 🔹 특허 수 -->
+        <div>
+          <p style="margin:0; color:var(--muted); font-size:16px;">🔬 특허 수</p>
+          <p id="patentCount" style="margin:4px 0; font-size:34px; font-weight:700; color:var(--accent-2);">0</p>
+        </div>
+    
+        <!-- 🔹 총 인용 수 -->
+        <div>
+          <p style="margin:0; color:var(--muted); font-size:16px;">📘 총 인용 수 (Cited by)</p>
+          <p id="citeCount" style="margin:4px 0; font-size:34px; font-weight:700; color:var(--accent);">0</p>
+        </div>
+    
+        <!-- 🔹 저널 정보 -->
+        <div style="color:var(--muted); font-size:14px; line-height:1.5; max-width:420px;">
+          IEEE/RSJ IROS • IEEE Access • MDPI Sensors • IJCAS • IEEE IRC  
+          <br>
+        </div>
+    
+      </div>
+    </section>
+
+    
 
     <section id="contact" class="section" style="padding-bottom: 10px;">
       <h2 style="margin:0 0 12px">Contact</h2>
@@ -328,12 +339,11 @@
     });
   </script>
 
-
   <script>
   function animateCount(id, target, duration) {
     const el = document.getElementById(id);
     let start = 0;
-    const increment = target / (duration / 16); // 16ms ≈ 60fps
+    const increment = target / (duration / 16); // 60fps 기준
     const timer = setInterval(() => {
       start += increment;
       if (start >= target) {
@@ -344,19 +354,22 @@
     }, 16);
   }
   
-  // Intersection Observer: 스크롤로 보일 때 시작
-  const stats = document.querySelector('.stats');
+  // Intersection Observer: 화면에 보일 때 실행
+  const researchSection = document.getElementById('research');
   let started = false;
   const observer = new IntersectionObserver(entries => {
     if (entries[0].isIntersecting && !started) {
       started = true;
-      animateCount("paperCount", 6, 1200);
-      animateCount("patentCount", 1, 1200);
-      animateCount("projectCount", 12, 1200);
+      animateCount("paperCount", 6, 1200);   // 승인 논문 수
+      animateCount("patentCount", 1, 1200);  // 특허 수
+      animateCount("citeCount", 23, 1500);   // 총 인용 수
     }
   });
-  observer.observe(stats);
+  observer.observe(researchSection);
   </script>
+
+
+ 
 
 
 
