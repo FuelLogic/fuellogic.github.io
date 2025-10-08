@@ -93,7 +93,10 @@
         <h1>AI로봇 연구의 시작, <br>배움이 기술로 되는 순간</h1>
         
         <!-- <p>We build outdoor/indoor autonomous cleaning robots, XR teleoperation tools, and maker‑friendly education kits. Made in Korea — open, practical, and fast to deploy.</p> -->
-        <p>퓰로직은 AI · 로봇 기술을 결합해 연구를 바탕으로 문제를 해결합니다. <br>누구나 쉽게 배우고, 직접 구현하며, 성장할 수 있는 교육형 AI로봇 플랫폼을 만듭니다. <br><br>AI와 로봇 융합이 만들어갈 새로운 미래</p>
+        <p>퓰로직은 AI · 로봇 기술을 결합해 연구를 바탕으로 문제를 해결합니다. <br>누구나 쉽게 배우고, 직접 구현하며, 성장할 수 있는 교육형 AI로봇 플랫폼을 만듭니다. <br><br>
+          <span id="typing-text" style="color:var(--muted); font-weight:600;"></span>
+        </p>
+          <!-- AI와 로봇 융합이 만들어갈 새로운 미래 -->
         
         <div class="cta">
           <a class="btn primary" href="#contact">Get a demo</a>
@@ -109,6 +112,33 @@
         </ul>
       </div>
     </section>
+
+    <style>
+    #typing-text::after {
+      content: "|";
+      animation: blink 0.8s infinite;
+    }
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+    </style>
+    
+    <!-- 🔹 추가: typing 효과 스크립트 -->
+    <script>
+    const text = "AI와 로봇 융합이 만들어갈 새로운 미래";
+    let i = 0;
+    
+    function typeEffect() {
+      if (i < text.length) {
+        document.getElementById("typing-text").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeEffect, 120); // 타이핑 속도 (100~150이 자연스럽습니다)
+      }
+    }
+    
+    window.addEventListener('load', typeEffect);
+    </script>
 
     <section id="products" class="section">
       <h2 style="margin:0 0 12px">Products</h2>
