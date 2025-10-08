@@ -56,6 +56,12 @@
       nav { display: none; }
       .card-grid { grid-template-columns: 1fr; }
     }
+    nav {
+      display: flex;
+      gap: 18px;
+      margin-right: 40px; /* ← 메뉴 전체를 왼쪽으로 이동 */
+    }
+
   </style>
 </head>
 <body>
@@ -69,7 +75,7 @@
         Fuel Logic
         <span class="badge">Robotics</span>
       </div>
-      <nav>
+      <nav> 
         <a href="#products">Products</a>
         <a href="#tech">Tech</a>
         <a href="#contact">Contact</a>
